@@ -137,7 +137,7 @@ router.post("/login", async (req, res) => {
     const token = jwt.sign(
       { userId: user._id },
       process.env.JWT_SECRET || "your-secret-key",
-      { expiresIn: "7d" }
+      { expiresIn: "365s" }
     );
 
     // Set token in httpOnly cookie
@@ -204,7 +204,7 @@ router.get("/verify-email", async (req, res) => {
     const jwtToken = jwt.sign(
       { userId: user._id },
       process.env.JWT_SECRET || "your-secret-key",
-      { expiresIn: "7d" }
+      { expiresIn: "365d" }
     );
 
     res.cookie("token", jwtToken, {
